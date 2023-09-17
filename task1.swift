@@ -33,13 +33,11 @@ func calculateOperation() {
       print(resMultiply)
 
 
-    case "/":
-      if unwrappedSecondNum == 0 {
-        print("Не можна ділити на 0")
-      } else {
-        let resDivide = divideNumbers(number1: unwrappedFirstNum, number2: unwrappedSecondNum)
-        print(resDivide)
-      }
+    func divideNumbers(number1: Int, number2: Int) throws -> Double {
+    guard number2 != 0 else{ throw MathematicalOperationError.divisionByZero("ДІЛИТИ НА 0 НЕ МОЖНА") } 
+    return Double(number1) / Double(number2)
+  
+}
 
 
     default:
