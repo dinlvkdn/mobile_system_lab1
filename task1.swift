@@ -10,42 +10,31 @@ enum MathematicalOperationError: Error {
     case invalidSelection(String)
 }
 
-func calculateOperation() {
-  if let unwrappedFirstNum = firstNum,
+func calculateOperation() throws {
+  guard let unwrappedFirstNum = firstNum,
     let unwrappedSecondNum = secondNum,
     let unwrappedsymbol = symbol
-  {
-
-
-    switch unwrappedsymbol {
-    case "+":
-      let resAdd = addNumbers(number1: unwrappedFirstNum, number2: unwrappedSecondNum)
-      print(resAdd)
-
-
-    case "-":
-      let resSubtract = subtractNumbers(number1: unwrappedFirstNum, number2: unwrappedSecondNum)
-      print(resSubtract)
-
-
-    case "*":
-      let resMultiply = multiplyNumbers(number1: unwrappedFirstNum, number2: unwrappedSecondNum)
-      print(resMultiply)
-
-
-    func divideNumbers(number1: Int, number2: Int) throws -> Double {
-    guard number2 != 0 else{ throw MathematicalOperationError.divisionByZero("ДІЛИТИ НА 0 НЕ МОЖНА") } 
-    return Double(number1) / Double(number2)
-  
-}
-
-
-    default:
-      print("Не вірний оператор")
-    }
-  } else {
-    print("Ви не ввели symbol, firstNum або secondNum")
-    return
+  else {
+      throw MathematicalOperationError.invalidSelection("ВВЕДІТЬ ОПЕРАТОР, ПЕРШЕ АБО ДРУГЕ ЧИСЛО")
+  }
+  switch unwrappedsymbol {
+  case "+":
+    print(addNumbers(number1: unwrappedFirstNum, number2: unwrappedSecondNum))
+  case "-":
+    print(subtractNumbers(number1: unwrappedFirstNum, number2: unwrappedSecondNum))
+  case "*":
+    print(multiplyNumbers(number1: unwrappedFirstNum, number2: unwrappedSecondNum))
+  case "/":
+       do {
+           let resDivide = try divideNumbers(number1: unwrappedFirstNum, number2: unwrappedSecondNum)
+           print(resDivide)
+          }catch let error as MathematicalOperationError {
+            print( error)
+          } catch {
+           print("Помилка")
+          }
+  default:
+    print("Не вірний оператор")
   }
 }
 
