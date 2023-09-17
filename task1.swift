@@ -5,6 +5,10 @@ var symbol: String? = "-"  // Operator: "+", "-", "*", "/"
 var firstNum: Int? = 9
 var secondNum: Int? = 0
 
+enum MathematicalOperationError: Error {
+    case divisionByZero(String)
+    case invalidSelection(String)
+}
 
 func calculateOperation() {
   if let unwrappedFirstNum = firstNum,
