@@ -51,23 +51,14 @@ func calculateOperation() {
 
 
 func addNumbers(number1: Int, number2: Int) -> Int {
-  let sum = number1 + number2
-  return sum
+  return number1 + number2
 }
-
-
 func subtractNumbers(number1: Int, number2: Int) -> Int {
-  let difference = number1 - number2
-  return difference
+  return number1 - number2
 }
-
-
 func multiplyNumbers(number1: Int, number2: Int) -> Int {
-  let product = number1 * number2
-  return product
+  return number1 * number2
 }
-
-
 func divideNumbers(number1: Int, number2: Int) -> Double {
   if number2 == 0 {
     return 0
