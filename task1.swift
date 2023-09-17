@@ -58,4 +58,10 @@ func divideNumbers(number1: Int, number2: Int) -> Double {
 }
 
 
-calculateOperation()
+do{
+  try calculateOperation()
+}
+catch let error as MathematicalOperationError {
+    print( error)
+}
+
